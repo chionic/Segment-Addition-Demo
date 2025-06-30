@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsl7w6ujnetde"]
+
+[ext_resource type="PackedScene" uid="uid://cm3djj3dswoem" path="res://StitchDiskScenes/ForestSlices/forest_1.glb" id="1_ge5k0"]
+[ext_resource type="Script" path="res://StitchDiskScenes/ForestScenes/RemoveOnExit.gd" id="2_4dbrb"]
+
+[node name="forest_1" type="Node3D"]
+
+[node name="forest_1" parent="." instance=ExtResource("1_ge5k0")]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(3.94674, 0, 0.325274, 0, 20, 0, -0.650549, 0, 1.97337, -4.133, 20, -40)
+script = ExtResource("2_4dbrb")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D" method="_on_screen_exited"]

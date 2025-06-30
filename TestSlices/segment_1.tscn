@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm7v2qr6xsvr2"]
+
+[ext_resource type="PackedScene" uid="uid://bymbewgdaa65u" path="res://StitchDiskScenes/TestSlices/updated1Slice.glb" id="1_gohp3"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="2_l2y4s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pbmrx"]
+
+[node name="segment_1" type="Node3D"]
+
+[node name="updated1Slice" parent="." instance=ExtResource("1_gohp3")]
+script = ExtResource("2_l2y4s")
+nodeRadians = 0.196
+
+[node name="CheckCube" type="MeshInstance3D" parent="updated1Slice"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 9.5372, 3.25801, -0.912456)
+mesh = SubResource("BoxMesh_pbmrx")

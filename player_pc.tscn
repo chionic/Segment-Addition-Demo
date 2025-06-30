@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djyxkjfofcvg7"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/PlayerPC.gd" id="1_0b8qp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fhf0"]
+
+[node name="PlayerPC" type="CharacterBody3D"]
+script = ExtResource("1_0b8qp")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7fhf0")
+
+[node name="RotationHelper" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="RotationHelper"]

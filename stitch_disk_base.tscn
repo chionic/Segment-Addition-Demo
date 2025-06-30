@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbkt07j2augcx"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/StitchDiskBase.gd" id="1_nmrbt"]
+[ext_resource type="PackedScene" uid="uid://4l7vi7mw77my" path="res://StitchDiskScenes/TestSlices/segment33.tscn" id="2_i1v1o"]
+[ext_resource type="PackedScene" uid="uid://bls5li2j6i2bb" path="res://StitchDiskScenes/TestSlices/fullCircle.glb" id="3_lwb5n"]
+[ext_resource type="PackedScene" uid="uid://djyxkjfofcvg7" path="res://StitchDiskScenes/player_pc.tscn" id="4_ui423"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="5_i38c6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_01npy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s5ny6"]
+
+[node name="StitchDiskBase" type="Node3D"]
+script = ExtResource("1_nmrbt")
+
+[node name="fullCircle" parent="." instance=ExtResource("3_lwb5n")]
+
+[node name="PlayerPC" parent="." instance=ExtResource("4_ui423")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerPC"]
+
+[node name="SliceList" type="Node3D" parent="."]
+
+[node name="SegmentCube" parent="SliceList" instance=ExtResource("2_i1v1o")]
+script = ExtResource("5_i38c6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SliceList/SegmentCube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39733, 1, -2.70268)
+mesh = SubResource("BoxMesh_01npy")
+
+[node name="Segment34" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(0.833886, 0, 0.551937, 0, 1, 0, -0.551937, 0, 0.833886, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment35" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(0.390731, 0, 0.920505, 0, 1, 0, -0.920505, 0, 0.390731, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment36" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(-0.182235, 0, 0.983255, 0, 1, 0, -0.983255, 0, -0.182235, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment37" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(-0.694658, 0, 0.71934, 0, 1, 0, -0.71934, 0, -0.694658, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="SegmentCylinder" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(-0.976296, 0, 0.21644, 0, 1, 0, -0.21644, 0, -0.976296, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SliceList/SegmentCylinder"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 8.54033, 1.47686, -2.56854)
+mesh = SubResource("CylinderMesh_s5ny6")
+
+[node name="Segment39" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(-0.93358, 0, -0.358368, 0, 1, 0, 0.358368, 0, -0.93358, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment40" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(-0.580703, 0, -0.814116, 0, 1, 0, 0.814116, 0, -0.580703, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment41" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(-0.0348993, 0, -0.999391, 0, 1, 0, 0.999391, 0, -0.0348993, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment42" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(0.522499, 0, -0.85264, 0, 1, 0, 0.85264, 0, 0.522499, 0, 0, 0)
+script = ExtResource("5_i38c6")
+
+[node name="Segment43" parent="SliceList" instance=ExtResource("2_i1v1o")]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 0, 0, 0)
+script = ExtResource("5_i38c6")

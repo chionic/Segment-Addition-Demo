@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://hymymnmd1tiv"]
+
+[ext_resource type="PackedScene" uid="uid://dnfyom1mtvwnn" path="res://StitchDiskScenes/ForestSlices/forest_6.glb" id="1_284n4"]
+
+[node name="forest_6" type="Node3D"]
+
+[node name="forest_6" parent="." instance=ExtResource("1_284n4")]
+transform = Transform3D(-10, 0, -8.74228e-07, 0, 1, 0, 8.74228e-07, 0, -10, 0, -2, 0)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(25.7237, 0, 1.11613, 0, 20, 0, -17.3, 0, 1.6596, -26.659, 20, -40)

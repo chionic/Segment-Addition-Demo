@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://23e0f45lina8"]
+
+[ext_resource type="PackedScene" uid="uid://clxfuy3yomir1" path="res://StitchDiskScenes/TestSlices/1SegmentSlice2.glb" id="1_2c6eg"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="1_23ocu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_efnvq"]
+
+[node name="segment11" type="Node3D"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("1_23ocu")
+
+[node name="1SegmentSlice2" parent="." instance=ExtResource("1_2c6eg")]
+
+[node name="CheckCube" type="MeshInstance3D" parent="1SegmentSlice2"]
+transform = Transform3D(0.5, 0, 0, 0, 5, 0, 0, 0, 0.5, 9.44852, 55.5388, -0.972911)
+mesh = SubResource("BoxMesh_efnvq")
+
+[node name="PosStart" type="Node3D" parent="1SegmentSlice2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0397, 0, 0)
+
+[node name="PosEnd" type="Node3D" parent="1SegmentSlice2"]
+transform = Transform3D(1, 0, -1.74533e-05, 0, 1, 0, 1.74533e-05, 0, 1, 9.76705, 0, -1.90812)

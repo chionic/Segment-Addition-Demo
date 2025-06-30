@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://5mj1cdd0xdqt"]
+
+[ext_resource type="PackedScene" uid="uid://c6amjvitbgaw2" path="res://StitchDiskScenes/Trees/LowPoly_mid_birch.glb" id="1_husda"]
+
+[node name="LowPoly_mid_birch" instance=ExtResource("1_husda")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://5hwwm7v3rxnx"]
+
+[ext_resource type="PackedScene" uid="uid://c6fcc5ospifyo" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_evergreen_A.glb" id="1_vibnu"]
+
+[node name="LowPoly_smallMid_evergreen_A" instance=ExtResource("1_vibnu")]

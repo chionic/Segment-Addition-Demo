@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvuc6nsi10njb"]
+
+[ext_resource type="PackedScene" uid="uid://c3ia7qh357pbg" path="res://StitchDiskScenes/TestSlices/2SegmentSlice.glb" id="1_ii81m"]
+
+[node name="segment22" type="Node3D"]
+
+[node name="2SegmentSlice" parent="." instance=ExtResource("1_ii81m")]
+
+[node name="PosStart" type="Node3D" parent="2SegmentSlice"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0397, 0, 0)
+
+[node name="PosEnd" type="Node3D" parent="2SegmentSlice"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.20928, 0, -3.84376)
