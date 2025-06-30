@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pn1ilag6n5vk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oymyo"]
+
+[node name="GoalCube" type="MeshInstance3D"]
+transform = Transform3D(19.6191, 0, -3.88469, 0, 20, 0, 3.88469, 0, 19.6191, -73.8428, 21.7286, -175.665)
+mesh = SubResource("BoxMesh_oymyo")
+skeleton = NodePath("../../forest_1_5")

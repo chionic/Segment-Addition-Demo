@@ -1,0 +1,122 @@
+[gd_scene load_steps=16 format=3 uid="uid://yei5yuklebdo"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_1exko"]
+[ext_resource type="Script" path="res://StitchDiskScenes/MovingGoalPosts.gd" id="2_qprqx"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_xuoyh"]
+[ext_resource type="PackedScene" uid="uid://vegcn56piibe" path="res://StitchDiskScenes/ForestSlices/forestFullCircle.glb" id="4_n0hpf"]
+[ext_resource type="Script" path="res://Centre.gd" id="5_dxj7s"]
+[ext_resource type="PackedScene" uid="uid://2c42tp660ibb" path="res://goal_cylinder.tscn" id="6_k6ned"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="7_2acij"]
+[ext_resource type="PackedScene" uid="uid://ccsj0b6nek3wc" path="res://ui_questionnaire.tscn" id="8_gg62i"]
+[ext_resource type="PackedScene" uid="uid://pn1ilag6n5vk" path="res://goal_cube.tscn" id="9_ticpr"]
+[ext_resource type="Script" path="res://LoggingSystem.gd" id="10_2qg28"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_du56u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0esd"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.854902, 0.819608, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tww6s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r4l3n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fvlhb"]
+
+[node name="MovingGoalposts" type="Node3D"]
+process_mode = 1
+script = ExtResource("1_1exko")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_qprqx")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="turning_sphere" type="Node3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -20)
+
+[node name="isTurning" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/turning_sphere"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_du56u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_m0esd")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_tww6s")
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" instance=ExtResource("3_xuoyh")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+collision_mask = 5243008
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+transform = Transform3D(9.55343e-17, 4.37114e-09, 0.1, 0.05, -4.37114e-09, 0, 2.18557e-09, 0.1, -4.37114e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_r4l3n")
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" instance=ExtResource("3_xuoyh")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+collision_mask = 5243008
+
+[node name="forestFullCircle" parent="." instance=ExtResource("4_n0hpf")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -2, 0)
+
+[node name="Rotator" type="Node3D" parent="."]
+
+[node name="CentreCylinder" type="Node3D" parent="Rotator"]
+script = ExtResource("5_dxj7s")
+
+[node name="GoalCylinder" parent="Rotator/CentreCylinder" instance=ExtResource("6_k6ned")]
+transform = Transform3D(-18.4909, 0, 7.62142, 0, 15, 0, -7.62142, 0, -18.4909, 190, 25, 0)
+
+[node name="uiHookCy" type="Node3D" parent="Rotator/CentreCylinder"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 5, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotator/CentreCylinder/uiHookCy"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_fvlhb")
+skeleton = NodePath("../../../..")
+
+[node name="Questionnaire" parent="Rotator/CentreCylinder" instance=ExtResource("7_2acij")]
+process_mode = 3
+transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-10, 5, 1.5, 0)
+visible = false
+screen_size = Vector2(300, 200)
+collision_layer = 5243008
+scene = ExtResource("8_gg62i")
+viewport_size = Vector2(640, 360)
+unshaded = true
+
+[node name="CentreCube" type="Node3D" parent="Rotator"]
+script = ExtResource("5_dxj7s")
+
+[node name="GoalCube" parent="Rotator/CentreCube" instance=ExtResource("9_ticpr")]
+transform = Transform3D(19.6191, 0, -3.88469, 0, 20, 0, 3.88469, 0, 19.6191, -190, 25, 0)
+
+[node name="uiHookCube" type="Node3D" parent="Rotator/CentreCube"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -5, 1, 0)
+
+[node name="Questionnaire2" parent="Rotator/CentreCube" instance=ExtResource("7_2acij")]
+process_mode = 3
+transform = Transform3D(-4.37114e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, -4.37114e-10, -5, 1.5, 0)
+visible = false
+screen_size = Vector2(300, 200)
+collision_layer = 5243008
+scene = ExtResource("8_gg62i")
+viewport_size = Vector2(640, 360)
+unshaded = true
+
+[node name="Logger" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("10_2qg28")

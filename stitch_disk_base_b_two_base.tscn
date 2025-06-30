@@ -1,0 +1,155 @@
+[gd_scene load_steps=17 format=3 uid="uid://s7erwdn4jnia"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_0giuw"]
+[ext_resource type="Script" path="res://StitchDiskScenes/HeadsetPositionRotation.gd" id="2_ynecb"]
+[ext_resource type="Script" path="res://StitchDiskScenes/simplifiedDisk2.gd" id="3_kl23e"]
+[ext_resource type="PackedScene" uid="uid://cnkcot87qtdc7" path="res://StitchDiskScenes/TestSlices/segment_2.tscn" id="4_gcqlm"]
+[ext_resource type="PackedScene" uid="uid://bls5li2j6i2bb" path="res://StitchDiskScenes/TestSlices/fullCircle.glb" id="7_r2ps6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87bd7"]
+albedo_color = Color(0.34902, 0.101961, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bah4l"]
+material = SubResource("StandardMaterial3D_87bd7")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tpabt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5v8o3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbdt6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swwiv"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0113i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo4d7"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3f3mo"]
+
+[sub_resource type="Sky" id="Sky_m065i"]
+sky_material = SubResource("ProceduralSkyMaterial_3f3mo")
+
+[sub_resource type="Environment" id="Environment_pak0w"]
+background_mode = 2
+background_energy_multiplier = 0.33
+sky = SubResource("Sky_m065i")
+ambient_light_source = 3
+
+[node name="StitchDiskBaseB" type="Node3D"]
+script = ExtResource("1_0giuw")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_ynecb")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+current = true
+
+[node name="isTurning" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.123599, -4.26487)
+mesh = SubResource("SphereMesh_bah4l")
+skeleton = NodePath("../../..")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+pose = &"skeleton"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.05, 0, 0, 0, 0.2, -0.5, 1, -0.5)
+visible = false
+mesh = SubResource("CylinderMesh_tpabt")
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+pose = &"skeleton"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.05, 0, 0, 0, 0.2, 0.5, 1, -0.5)
+visible = false
+mesh = SubResource("CylinderMesh_5v8o3")
+
+[node name="playerForward" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 0)
+
+[node name="otherOb" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 20)
+
+[node name="StitchDisk" type="Node3D" parent="."]
+script = ExtResource("3_kl23e")
+
+[node name="segment2" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+
+[node name="LookAtCube" type="MeshInstance3D" parent="StitchDisk/segment2"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 181.736, 19.0584, -55.1615)
+mesh = SubResource("BoxMesh_rbdt6")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_swwiv")
+
+[node name="segment3" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
+
+[node name="segment4" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="segment6" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(0.382683, 0, 0.92388, 0, 1, 0, -0.92388, 0, 0.382683, 0, 0, 0)
+
+[node name="segment7" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-1.49012e-07, 0, 1, 0, 1, 0, -1, 0, -1.49012e-07, 0, 0, 0)
+
+[node name="segment9" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-0.382684, 0, 0.923879, 0, 1, 0, -0.923879, 0, -0.382684, 0, 0, 0)
+
+[node name="segment10" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="segment12" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, -0.92388, 0, 0, 0)
+
+[node name="segment13" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, 0, 0, 0)
+
+[node name="LookAtCylinder" type="MeshInstance3D" parent="StitchDisk/segment13"]
+transform = Transform3D(4.19335, 0, -2.72319, 0, 5, 0, 2.72319, 0, 4.19335, 180.004, 25.6367, -55.7164)
+mesh = SubResource("CylinderMesh_0113i")
+skeleton = NodePath("../../Segment40")
+surface_material_override/0 = SubResource("StandardMaterial3D_jo4d7")
+
+[node name="segment14" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, -0.92388, 0, 0, 0)
+
+[node name="segment15" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="segment16" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="segment17" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(-0.382684, 0, -0.92388, 0, 1, 0, 0.92388, 0, -0.382684, 0, 0, 0)
+
+[node name="segment18" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(0.382684, 0, -0.92388, 0, 1, 0, 0.92388, 0, 0.382684, 0, 0, 0)
+
+[node name="segment19" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="segment20" parent="StitchDisk" instance=ExtResource("4_gcqlm")]
+transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pak0w")
+
+[node name="fullCircle" parent="." instance=ExtResource("7_r2ps6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.446104, 0.894981, 1.33363e-08, -0.327052, -0.163019, 0.930839, 0.833083, 0.415251, 0.365429, -3.6235, 32.5231, 0)
+light_energy = 0.192
+
+[node name="EnvironmentObstacles" type="Node3D" parent="."]

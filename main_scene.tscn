@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://daph4gt5wgs3w"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_fk56u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kkhgq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysudh"]
+albedo_color = Color(0.243137, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5pot"]
+
+[sub_resource type="Skin" id="Skin_3sywi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0yuky"]
+albedo_color = Color(0.282353, 0.415686, 1, 1)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ew45h"]
+
+[sub_resource type="Sky" id="Sky_u6s66"]
+sky_material = SubResource("PhysicalSkyMaterial_ew45h")
+
+[sub_resource type="Environment" id="Environment_asw2d"]
+background_mode = 2
+background_energy_multiplier = 16.0
+sky = SubResource("Sky_u6s66")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kb67k"]
+
+[node name="MainScene" type="Node3D"]
+script = ExtResource("1_fk56u")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="face cube" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11922, 0.867453, -2.71991)
+mesh = SubResource("BoxMesh_kkhgq")
+surface_material_override/0 = SubResource("StandardMaterial3D_ysudh")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+tracker = &"left_hand"
+pose = &"skeleton"
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+pose = &"skeleton"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.28651, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.234)
+mesh = SubResource("BoxMesh_k5pot")
+skin = SubResource("Skin_3sywi")
+surface_material_override/0 = SubResource("StandardMaterial3D_0yuky")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_asw2d")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_kb67k")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.162751, 0.984495, -0.0654304, 0.562048, 0.147009, 0.813935, 0.810934, 0.0956934, -0.577259, 0, 7.93739, 0)
+
+[node name="Console" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1307.0
+offset_bottom = 701.0
+
+[node name="printedTest" type="Label" parent="Console"]
+layout_mode = 0
+offset_right = 242.0
+offset_bottom = 26.0
+text = "sample text and some more"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

@@ -1,0 +1,57 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="movingGoalposts_Forest"
+run/main_scene="res://moving_goalposts.tscn"
+config/use_hidden_project_data_directory=false
+config/features=PackedStringArray("4.1", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+GlobalVariable="*res://global_variable.gd"
+
+[debug]
+
+file_logging/enable_file_logging=true
+file_logging/enable_file_logging.pc=false
+file_logging/max_log_files=8
+file_logging/enable_file_logging.android=true
+file_logging/enable_file_logging.mobile=true
+
+[display]
+
+window/vsync/vsync_mode=0
+window/ios/suppress_ui_gesture=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_21="Ui Layer"
+
+[physics]
+
+common/physics_ticks_per_second=90
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+
+[xr]
+
+openxr/enabled=true
+shaders/enabled=true

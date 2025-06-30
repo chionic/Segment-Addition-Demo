@@ -1,0 +1,336 @@
+[gd_scene load_steps=46 format=3 uid="uid://cij046jtki74x"]
+
+[ext_resource type="PackedScene" uid="uid://vegcn56piibe" path="res://StitchDiskScenes/ForestSlices/forestFullCircle.glb" id="1_5tmsr"]
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_rnt3k"]
+[ext_resource type="Script" path="res://StitchDiskScenes/MovingGoalPosts.gd" id="2_w10la"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_5fdee"]
+[ext_resource type="PackedScene" uid="uid://pn1ilag6n5vk" path="res://goal_cube.tscn" id="4_0purl"]
+[ext_resource type="PackedScene" uid="uid://bwdtu4bx8j2wf" path="res://StitchDiskScenes/Trees/LowPoly_mid_evergreen_A.glb" id="4_hurjm"]
+[ext_resource type="PackedScene" uid="uid://cr533f884c6vf" path="res://StitchDiskScenes/Trees/LowPoly_mid_leafy_A.glb" id="5_nrlcd"]
+[ext_resource type="PackedScene" uid="uid://2c42tp660ibb" path="res://goal_cylinder.tscn" id="5_qx3yk"]
+[ext_resource type="Script" path="res://Centre.gd" id="6_3ww5j"]
+[ext_resource type="PackedScene" uid="uid://drjnemap61ix0" path="res://StitchDiskScenes/Trees/LowPoly_mid_evergreen_B.glb" id="6_jrqe0"]
+[ext_resource type="PackedScene" uid="uid://cis7debfanddo" path="res://StitchDiskScenes/Trees/LowPoly_mid_leafy_B.glb" id="7_jpgll"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_cqbpe"]
+[ext_resource type="PackedScene" uid="uid://dfrpefm3qwfth" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_birch.glb" id="8_yf1g8"]
+[ext_resource type="PackedScene" uid="uid://c6fcc5ospifyo" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_evergreen_A.glb" id="9_ske46"]
+[ext_resource type="PackedScene" uid="uid://ccsj0b6nek3wc" path="res://ui_questionnaire.tscn" id="9_vbm58"]
+[ext_resource type="PackedScene" uid="uid://cy0bh7c56ayry" path="res://StitchDiskScenes/Trees/LowPoly_tallest_evergreen_B.glb" id="10_mch3p"]
+[ext_resource type="PackedScene" uid="uid://cyd2mnjcq2l7u" path="res://StitchDiskScenes/Trees/LowPoly_tallest_leafy_A.glb" id="11_2qcap"]
+[ext_resource type="Script" path="res://LoggingSystem.gd" id="11_vab1a"]
+[ext_resource type="PackedScene" uid="uid://cc0acnof54d6" path="res://StitchDiskScenes/Trees/LowPoly_tallest_leafy_B.glb" id="12_cxexg"]
+[ext_resource type="PackedScene" uid="uid://c6amjvitbgaw2" path="res://StitchDiskScenes/Trees/LowPoly_mid_birch.glb" id="13_f3s47"]
+[ext_resource type="PackedScene" uid="uid://e4us47tw1cee" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_evergreen_B.glb" id="14_86krd"]
+[ext_resource type="PackedScene" uid="uid://db3yup0vbff3r" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_leafy_A.glb" id="15_7foyy"]
+[ext_resource type="PackedScene" uid="uid://cb7ivgmu6c4n7" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_leafy_B.glb" id="16_5et7v"]
+[ext_resource type="PackedScene" uid="uid://lvnvfvt48aql" path="res://StitchDiskScenes/Trees/LowPoly_small_birch.glb" id="17_154cw"]
+[ext_resource type="PackedScene" uid="uid://d166s4oba5xya" path="res://StitchDiskScenes/Trees/LowPoly_tall_evergreen_A.glb" id="18_yqwoi"]
+[ext_resource type="PackedScene" uid="uid://d0r2afp1a3s20" path="res://StitchDiskScenes/Trees/LowPoly_tall_leafy_A.glb" id="19_3gwgu"]
+[ext_resource type="PackedScene" uid="uid://cvy7y0jkuh18a" path="res://StitchDiskScenes/Trees/lowPoly_small_leafy_A.glb" id="20_m8o31"]
+[ext_resource type="PackedScene" uid="uid://iekbkcl4hp5x" path="res://StitchDiskScenes/Trees/LowPoly_tall_evergreen_B.glb" id="21_5lqrp"]
+[ext_resource type="PackedScene" uid="uid://bpm6x1hvgj6bv" path="res://StitchDiskScenes/Trees/LowPoly_tall_leafy_B.glb" id="22_8qfdj"]
+[ext_resource type="PackedScene" uid="uid://dp5ahfu5sy86m" path="res://StitchDiskScenes/Trees/LowPoly_tallest_evergreen_A.glb" id="23_m0pws"]
+[ext_resource type="PackedScene" uid="uid://dprx8ons26sqq" path="res://StitchDiskScenes/Trees/lowPoly_small_leafy_B.glb" id="24_ll843"]
+[ext_resource type="PackedScene" uid="uid://csmefkamocj0r" path="res://StitchDiskScenes/Trees/lowPoly_small_evergreen_A.glb" id="25_3wr1b"]
+[ext_resource type="PackedScene" uid="uid://x7ss7l86xkmo" path="res://ui_questionnaire_2.tscn" id="32_hxq7w"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_du56u"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tww6s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r4l3n"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wj1uw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_44i61"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otcpf"]
+cull_mode = 1
+albedo_color = Color(0.694118, 1, 1, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ijqxd"]
+
+[sub_resource type="Sky" id="Sky_76cs8"]
+sky_material = SubResource("ProceduralSkyMaterial_ijqxd")
+
+[sub_resource type="Environment" id="Environment_5gjsc"]
+background_mode = 2
+sky = SubResource("Sky_76cs8")
+ambient_light_color = Color(0.635294, 0.301961, 0.0470588, 0.478431)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v3oy"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fvlhb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dt8b"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="MovingGoalposts" type="Node3D"]
+process_mode = 1
+script = ExtResource("1_rnt3k")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_w10la")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="turning_sphere" type="Node3D" parent="XROrigin3D/XRCamera3D"]
+process_mode = 4
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, -5)
+visible = false
+
+[node name="isTurning" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/turning_sphere"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_du56u")
+skeleton = NodePath("../..")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_tww6s")
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" instance=ExtResource("3_5fdee")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+collision_mask = 5243008
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+transform = Transform3D(9.55343e-17, 4.37114e-09, 0.1, 0.05, -4.37114e-09, 0, 2.18557e-09, 0.1, -4.37114e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_r4l3n")
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" instance=ExtResource("3_5fdee")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+collision_mask = 5243008
+
+[node name="Trees" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="TempTreeCoverDisk" type="MeshInstance3D" parent="Trees"]
+transform = Transform3D(40, 0, 0, 0, 0.4, 0, 0, 0, 40, 0, 2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_wj1uw")
+
+[node name="InnerCircle" type="Node" parent="Trees"]
+
+[node name="LowPoly_mid_evergreen_A" parent="Trees/InnerCircle" instance=ExtResource("4_hurjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.8448)
+
+[node name="LowPoly_mid_evergreen_A2" parent="Trees/InnerCircle" instance=ExtResource("4_hurjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29436, 0, -17.8407)
+
+[node name="LowPoly_mid_leafy_A" parent="Trees/InnerCircle" instance=ExtResource("5_nrlcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32014, 0, 19.3741)
+
+[node name="LowPoly_mid_evergreen_B" parent="Trees/InnerCircle" instance=ExtResource("6_jrqe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.43122, 0, 18.8132)
+
+[node name="LowPoly_mid_leafy_B" parent="Trees/InnerCircle" instance=ExtResource("7_jpgll")]
+transform = Transform3D(0.760848, 0, -0.64893, 0, 1, 0, 0.64893, 0, 0.760848, -6.82374, 0, 14.5173)
+
+[node name="LowPoly_smallMid_birch" parent="Trees/InnerCircle" instance=ExtResource("8_yf1g8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8841, 0, 10.5237)
+
+[node name="LowPoly_smallMid_evergreen_A" parent="Trees/InnerCircle" instance=ExtResource("9_ske46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65953, 0, 10.2688)
+
+[node name="LowPoly_tallest_evergreen_B" parent="Trees/InnerCircle" instance=ExtResource("10_mch3p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9804, 9.53674e-07, -15.4557)
+
+[node name="LowPoly_tallest_evergreen_B2" parent="Trees/InnerCircle" instance=ExtResource("10_mch3p")]
+transform = Transform3D(0.774613, 0, -0.632435, 0, 1, 0, 0.632435, 0, 0.774613, 19.2202, 0, 0)
+
+[node name="LowPoly_tallest_leafy_A" parent="Trees/InnerCircle" instance=ExtResource("11_2qcap")]
+transform = Transform3D(0.228827, 0, 0.973467, 0, 1, 0, -0.973467, 0, 0.228827, -18.9331, 0, -3.39136)
+
+[node name="LowPoly_tallest_leafy_B" parent="Trees/InnerCircle" instance=ExtResource("12_cxexg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1259, 0, -15.6493)
+
+[node name="LowPoly_mid_birch" parent="Trees/InnerCircle" instance=ExtResource("13_f3s47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0046, 0, 9.23181)
+
+[node name="LowPoly_mid_evergreen_B2" parent="Trees/InnerCircle" instance=ExtResource("6_jrqe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.649, 0, -4.33419)
+
+[node name="LowPoly_mid_evergreen_A3" parent="Trees/InnerCircle" instance=ExtResource("4_hurjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7357, 0, 1.26423)
+
+[node name="LowPoly_mid_evergreen_A4" parent="Trees/InnerCircle" instance=ExtResource("4_hurjm")]
+transform = Transform3D(0.601913, 0, -0.798562, 0, 1, 0, 0.798562, 0, 0.601913, 2.35668, -0.439356, -16.3216)
+
+[node name="LowPoly_mid_evergreen_B3" parent="Trees/InnerCircle" instance=ExtResource("6_jrqe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7523, 0, -6.9119)
+
+[node name="LowPoly_mid_leafy_B2" parent="Trees/InnerCircle" instance=ExtResource("7_jpgll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70134, 0, -20.4776)
+
+[node name="LowPoly_smallMid_evergreen_B" parent="Trees/InnerCircle" instance=ExtResource("14_86krd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0029, 0, -11.9238)
+
+[node name="LowPoly_smallMid_evergreen_B2" parent="Trees/InnerCircle" instance=ExtResource("14_86krd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1557, 0, 0)
+
+[node name="LowPoly_smallMid_leafy_A" parent="Trees/InnerCircle" instance=ExtResource("15_7foyy")]
+transform = Transform3D(1, 0, 0, 0, 0.999785, -0.0207505, 0, 0.0207505, 0.999785, -13.898, 0, -3.50126)
+
+[node name="LowPoly_smallMid_leafy_A2" parent="Trees/InnerCircle" instance=ExtResource("15_7foyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4314, 0, 4.95793)
+
+[node name="LowPoly_smallMid_leafy_A3" parent="Trees/InnerCircle" instance=ExtResource("15_7foyy")]
+transform = Transform3D(-0.440206, 0, -0.897897, 0, 1, 0, 0.897897, 0, -0.440206, -7.28461, 0, -14.5134)
+
+[node name="LowPoly_smallMid_leafy_B" parent="Trees/InnerCircle" instance=ExtResource("16_5et7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.746, 0, 5.033)
+
+[node name="LowPoly_smallMid_leafy_B2" parent="Trees/InnerCircle" instance=ExtResource("16_5et7v")]
+transform = Transform3D(-0.253167, 0, -0.967423, 0, 1, 0, 0.967423, 0, -0.253167, 7.33059, 0, 14.0588)
+
+[node name="LowPoly_small_birch" parent="Trees/InnerCircle" instance=ExtResource("17_154cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54389, 0, -14.0338)
+
+[node name="LowPoly_mid_evergreen_B4" parent="Trees/InnerCircle" instance=ExtResource("6_jrqe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.811, 0, 13.282)
+
+[node name="LowPoly_tall_evergreen_A" parent="Trees/InnerCircle" instance=ExtResource("18_yqwoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0035, 0, -10.239)
+
+[node name="LowPoly_tall_leafy_A" parent="Trees/InnerCircle" instance=ExtResource("19_3gwgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.364, 0, -14.614)
+
+[node name="LowPoly_mid_leafy_B3" parent="Trees/InnerCircle" instance=ExtResource("7_jpgll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4066, 0, -10.5092)
+
+[node name="MidRange" type="Node" parent="Trees"]
+
+[node name="LowPoly_mid_leafy_B" parent="Trees/MidRange" instance=ExtResource("7_jpgll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.834, 0, -24.8386)
+
+[node name="LowPoly_smallMid_birch" parent="Trees/MidRange" instance=ExtResource("8_yf1g8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0576, 0, -29.9987)
+
+[node name="LowPoly_smallMid_evergreen_A" parent="Trees/MidRange" instance=ExtResource("9_ske46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7686, 0, -8.07179)
+
+[node name="LowPoly_smallMid_leafy_A" parent="Trees/MidRange" instance=ExtResource("15_7foyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.869, 0, 0)
+
+[node name="LowPoly_smallMid_leafy_B" parent="Trees/MidRange" instance=ExtResource("16_5et7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1206, 0, -26.1011)
+
+[node name="lowPoly_small_leafy_A" parent="Trees/MidRange" instance=ExtResource("20_m8o31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4199, 0, 4.32209)
+
+[node name="LowPoly_tall_evergreen_A" parent="Trees/MidRange" instance=ExtResource("18_yqwoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2458, 0, -15.6322)
+
+[node name="LowPoly_tall_evergreen_B" parent="Trees/MidRange" instance=ExtResource("21_5lqrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2636, 0, -35.7361)
+
+[node name="LowPoly_tall_leafy_A" parent="Trees/MidRange" instance=ExtResource("19_3gwgu")]
+transform = Transform3D(0.472135, 0, 0.881526, 0, 1, 0, -0.881526, 0, 0.472135, -20.9911, 0.677464, 12.9032)
+
+[node name="LowPoly_tall_leafy_B" parent="Trees/MidRange" instance=ExtResource("22_8qfdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1565, 0, 16.2574)
+
+[node name="LowPoly_tall_evergreen_A2" parent="Trees/MidRange" instance=ExtResource("18_yqwoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.4946)
+
+[node name="LowPoly_tallest_evergreen_A" parent="Trees/MidRange" instance=ExtResource("23_m0pws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -19)
+
+[node name="lowPoly_small_leafy_A2" parent="Trees/MidRange" instance=ExtResource("20_m8o31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -4)
+
+[node name="lowPoly_small_leafy_B" parent="Trees/MidRange" instance=ExtResource("24_ll843")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 6)
+
+[node name="lowPoly_small_leafy_B2" parent="Trees/MidRange" instance=ExtResource("24_ll843")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 20)
+
+[node name="lowPoly_small_evergreen_A" parent="Trees/MidRange" instance=ExtResource("25_3wr1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 19)
+
+[node name="LowPoly_smallMid_birch2" parent="Trees/MidRange" instance=ExtResource("8_yf1g8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 23)
+
+[node name="LowPoly_smallMid_evergreen_B" parent="Trees/MidRange" instance=ExtResource("14_86krd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 22)
+
+[node name="LowPoly_smallMid_evergreen_B2" parent="Trees/MidRange" instance=ExtResource("14_86krd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3149, 0.365889, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trees"]
+transform = Transform3D(250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 0, 0)
+mesh = SubResource("SphereMesh_44i61")
+surface_material_override/0 = SubResource("StandardMaterial3D_otcpf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5gjsc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.446104, 0.894981, 1.33363e-08, -0.327052, -0.163019, 0.930839, 0.833083, 0.415251, 0.365429, -3.6235, 32.5231, 0)
+visible = false
+light_energy = 0.192
+
+[node name="forestFullCircle" parent="." instance=ExtResource("1_5tmsr")]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Rotator" type="Node3D" parent="."]
+
+[node name="CentreCylinder" type="Node3D" parent="Rotator"]
+script = ExtResource("6_3ww5j")
+
+[node name="GoalCylinder" parent="Rotator/CentreCylinder" instance=ExtResource("5_qx3yk")]
+transform = Transform3D(-18.4909, 0, 7.62142, 0, 15, 0, -7.62142, 0, -18.4909, 86, 15, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_5v3oy")
+
+[node name="uiHookCy" type="Node3D" parent="Rotator/CentreCylinder"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 5, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotator/CentreCylinder/uiHookCy"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_fvlhb")
+skeleton = NodePath("../../../..")
+
+[node name="Questionnaire" parent="Rotator/CentreCylinder" instance=ExtResource("8_cqbpe")]
+process_mode = 3
+transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-10, 5, 1.5, 0)
+screen_size = Vector2(300, 200)
+collision_layer = 5243008
+scene = ExtResource("9_vbm58")
+viewport_size = Vector2(640, 360)
+unshaded = true
+
+[node name="CentreCube" type="Node3D" parent="Rotator"]
+script = ExtResource("6_3ww5j")
+
+[node name="GoalCube" parent="Rotator/CentreCube" instance=ExtResource("4_0purl")]
+transform = Transform3D(20, 0, 0, 0, 30, 0, 0, 0, 20, -85.3961, 15, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_5dt8b")
+
+[node name="uiHookCube" type="Node3D" parent="Rotator/CentreCube"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -5, 1, 0)
+
+[node name="Questionnaire2" parent="Rotator/CentreCube" instance=ExtResource("8_cqbpe")]
+process_mode = 3
+transform = Transform3D(-4.37114e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, -4.37114e-10, -5, 1.5, 0)
+visible = false
+screen_size = Vector2(300, 200)
+collision_layer = 5243008
+scene = ExtResource("32_hxq7w")
+viewport_size = Vector2(640, 360)
+unshaded = true
+
+[node name="Logger" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("11_vab1a")

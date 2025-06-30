@@ -1,0 +1,256 @@
+[gd_scene load_steps=20 format=3 uid="uid://bcerwhn3tw2v3"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_v7jo4"]
+[ext_resource type="Script" path="res://StitchDiskScenes/HeadsetPositionRotation.gd" id="2_nndjd"]
+[ext_resource type="PackedScene" uid="uid://bls5li2j6i2bb" path="res://StitchDiskScenes/TestSlices/fullCircle.glb" id="3_6vreq"]
+[ext_resource type="Script" path="res://StitchDiskScenes/VisibilityHandler.gd" id="3_ayy6c"]
+[ext_resource type="PackedScene" uid="uid://du2odk251ov5y" path="res://StitchDiskScenes/TestSlices/3SegmentSlicePink.glb" id="4_5srl1"]
+[ext_resource type="Script" path="res://StitchDiskScenes/simplifiedDisk.gd" id="4_8nllv"]
+[ext_resource type="PackedScene" uid="uid://4l7vi7mw77my" path="res://StitchDiskScenes/TestSlices/segment33.tscn" id="4_f1d45"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="6_8splo"]
+[ext_resource type="Script" path="res://LoggingSystem.gd" id="9_3nmld"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87bd7"]
+albedo_color = Color(0.34902, 0.101961, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bah4l"]
+material = SubResource("StandardMaterial3D_87bd7")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tpabt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5v8o3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fmb48"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hs31r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j1a73"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3f3mo"]
+
+[sub_resource type="Sky" id="Sky_m065i"]
+sky_material = SubResource("ProceduralSkyMaterial_3f3mo")
+
+[sub_resource type="Environment" id="Environment_pak0w"]
+background_mode = 2
+background_energy_multiplier = 0.33
+sky = SubResource("Sky_m065i")
+ambient_light_source = 3
+
+[node name="StitchDiskBaseB" type="Node3D"]
+script = ExtResource("1_v7jo4")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_nndjd")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+current = true
+
+[node name="isTurning" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.123599, -4.26487)
+mesh = SubResource("SphereMesh_bah4l")
+skeleton = NodePath("../../..")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+pose = &"skeleton"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.05, 0, 0, 0, 0.2, -0.5, 1, -0.5)
+visible = false
+mesh = SubResource("CylinderMesh_tpabt")
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+pose = &"skeleton"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+transform = Transform3D(0.2, 0, 0, 0, 0.05, 0, 0, 0, 0.2, 0.5, 1, -0.5)
+visible = false
+mesh = SubResource("CylinderMesh_5v8o3")
+
+[node name="playerForward" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 0)
+
+[node name="otherOb" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 20)
+
+[node name="VisibilityHandler" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_ayy6c")
+
+[node name="StitchDisk" type="Node3D" parent="."]
+script = ExtResource("4_8nllv")
+
+[node name="3SegmentSlicePink" parent="StitchDisk" instance=ExtResource("4_5srl1")]
+transform = Transform3D(20, 0, 3.49691e-06, 0, 3, 0, -3.49691e-06, 0, 20, 0, -1.45, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg33" type="MeshInstance3D" parent="StitchDisk/3SegmentSlicePink"]
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/3SegmentSlicePink"]
+
+[node name="Segment34" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(16.7734, 0, 10.8928, 0, 3, 0, -10.8928, 0, 16.7734, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg34" type="MeshInstance3D" parent="StitchDisk/Segment34"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment34"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment35" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(8.13473, 0, 18.2709, 0, 3, 0, -18.2709, 0, 8.13473, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="LookAtCube" type="MeshInstance3D" parent="StitchDisk/Segment35"]
+transform = Transform3D(1, 0, 0, 0, 7, 0, 0, 0, 1, 7.96902, 5.22769, -3.64347)
+mesh = SubResource("BoxMesh_hs31r")
+skeleton = NodePath("")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment35"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment36" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(-3.12869, 0, 19.7538, 0, 3, 0, -19.7538, 0, -3.12869, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg36" type="MeshInstance3D" parent="StitchDisk/Segment36"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment36"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment37" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(-13.3826, 0, 14.8629, 0, 3, 0, -14.8629, 0, -13.3826, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg7" type="MeshInstance3D" parent="StitchDisk/Segment37"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment37"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment38" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(-19.3185, 0, 5.17638, 0, 3, 0, -5.17638, 0, -19.3185, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg38" type="MeshInstance3D" parent="StitchDisk/Segment38"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment38"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment39" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(-19.0211, 0, -6.18034, 0, 3, 0, 6.18034, 0, -19.0211, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg39" type="MeshInstance3D" parent="StitchDisk/Segment39"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment39"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment40" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(-12.5864, 0, -15.5429, 0, 3, 0, 15.5429, 0, -12.5864, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg40" type="MeshInstance3D" parent="StitchDisk/Segment40"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment40"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment41" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(-2.09057, 0, -19.8904, 0, 3, 0, 19.8904, 0, -2.09057, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="LookAtCylinder" type="MeshInstance3D" parent="StitchDisk/Segment41"]
+transform = Transform3D(0.838671, 0, -0.544639, 0, 5, 0, 0.544639, 0, 0.838671, 9.21564, 6.2578, -0.866519)
+mesh = SubResource("CylinderMesh_j1a73")
+skeleton = NodePath("../../Segment40")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment41"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment42" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(9.07981, 0, -17.8201, 0, 3, 0, 17.8201, 0, 9.07981, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg42" type="MeshInstance3D" parent="StitchDisk/Segment42"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment42"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="Segment43" parent="StitchDisk" instance=ExtResource("4_f1d45")]
+transform = Transform3D(17.3205, 0, -10, 0, 3, 0, 10, 0, 17.3205, 0, -1.5, 0)
+script = ExtResource("6_8splo")
+
+[node name="seg43" type="MeshInstance3D" parent="StitchDisk/Segment43"]
+transform = Transform3D(0.989543, 0, 0.144235, 0, 20, 0, -0.144235, 0, 0.989543, 8.32034, 9.39377, -2.7324)
+visible = false
+mesh = SubResource("BoxMesh_fmb48")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="StitchDisk/Segment43"]
+transform = Transform3D(0.0955443, 0, 0.856006, 0, 7, 0, -0.0295174, 0, 2.77079, 9.15134, 7.49163, -2.78671)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pak0w")
+
+[node name="fullCircle" parent="." instance=ExtResource("3_6vreq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.446104, 0.894981, 1.33363e-08, -0.327052, -0.163019, 0.930839, 0.833083, 0.415251, 0.365429, -3.6235, 32.5231, 0)
+light_energy = 0.192
+
+[node name="EnvironmentObstacles" type="Node3D" parent="."]
+
+[node name="Logger" type="Node" parent="."]
+script = ExtResource("9_3nmld")
+
+[connection signal="screen_entered" from="StitchDisk/3SegmentSlicePink/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [0]]
+[connection signal="screen_exited" from="StitchDisk/3SegmentSlicePink/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [0]]
+[connection signal="screen_entered" from="StitchDisk/Segment34/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [1]]
+[connection signal="screen_exited" from="StitchDisk/Segment34/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [1]]
+[connection signal="screen_entered" from="StitchDisk/Segment35/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [2]]
+[connection signal="screen_exited" from="StitchDisk/Segment35/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [2]]
+[connection signal="screen_entered" from="StitchDisk/Segment36/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [3]]
+[connection signal="screen_exited" from="StitchDisk/Segment36/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [3]]
+[connection signal="screen_entered" from="StitchDisk/Segment37/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [4]]
+[connection signal="screen_exited" from="StitchDisk/Segment37/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [4]]
+[connection signal="screen_entered" from="StitchDisk/Segment38/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [5]]
+[connection signal="screen_exited" from="StitchDisk/Segment38/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [5]]
+[connection signal="screen_entered" from="StitchDisk/Segment39/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [6]]
+[connection signal="screen_exited" from="StitchDisk/Segment39/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [6]]
+[connection signal="screen_entered" from="StitchDisk/Segment40/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [7]]
+[connection signal="screen_exited" from="StitchDisk/Segment40/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [7]]
+[connection signal="screen_entered" from="StitchDisk/Segment41/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [8]]
+[connection signal="screen_exited" from="StitchDisk/Segment41/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [8]]
+[connection signal="screen_entered" from="StitchDisk/Segment42/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [9]]
+[connection signal="screen_exited" from="StitchDisk/Segment42/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [9]]
+[connection signal="screen_entered" from="StitchDisk/Segment43/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [10]]
+[connection signal="screen_exited" from="StitchDisk/Segment43/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [10]]

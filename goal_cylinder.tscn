@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2c42tp660ibb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_638xc"]
+
+[node name="GoalCylinder" type="MeshInstance3D"]
+transform = Transform3D(-18.4909, 0, 7.62142, 0, 15, 0, -7.62142, 0, -18.4909, -73, 19.5752, -175)
+mesh = SubResource("CylinderMesh_638xc")
+skeleton = NodePath("../../forest_1_5")

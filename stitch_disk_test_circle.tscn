@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://nq1q0sjpuqjt"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_v4txk"]
+[ext_resource type="PackedScene" uid="uid://bls5li2j6i2bb" path="res://StitchDiskScenes/TestSlices/fullCircle.glb" id="3_sekvk"]
+[ext_resource type="Script" path="res://StitchDisk.gd" id="4_cxmmi"]
+[ext_resource type="PackedScene" uid="uid://4l7vi7mw77my" path="res://StitchDiskScenes/TestSlices/segment33.tscn" id="5_mk7ct"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="6_d8noy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3f3mo"]
+
+[sub_resource type="Sky" id="Sky_m065i"]
+sky_material = SubResource("ProceduralSkyMaterial_3f3mo")
+
+[sub_resource type="Environment" id="Environment_pak0w"]
+background_mode = 2
+sky = SubResource("Sky_m065i")
+ambient_light_source = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_hs31r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j1a73"]
+
+[node name="StitchDiskBaseB" type="Node3D"]
+script = ExtResource("1_v4txk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.244935, 0.96954, 0, -0.96954, 0.244935, 0, 285.854, 93.5519)
+fov = 68.8
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pak0w")
+
+[node name="fullCircle" parent="." instance=ExtResource("3_sekvk")]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 0, -4.44565, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.446104, 0.894981, 1.33363e-08, -0.327052, -0.163019, 0.930839, 0.833083, 0.415251, 0.365429, -3.6235, 32.5231, 0)
+
+[node name="EnvironmentObstacles" type="Node3D" parent="."]
+
+[node name="StitchDisk" type="Node3D" parent="."]
+script = ExtResource("4_cxmmi")
+
+[node name="Segment33" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(20, 0, 0, 0, 3, 0, 0, 0, 20, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment34" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(16.7734, 0, 10.8928, 0, 3, 0, -10.8928, 0, 16.7734, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment35" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(8.13473, 0, 18.2709, 0, 3, 0, -18.2709, 0, 8.13473, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="LookAtCube" type="MeshInstance3D" parent="StitchDisk/Segment35"]
+transform = Transform3D(0.406737, 0, -0.913545, 0, 7, 0, 0.913545, 0, 0.406737, 7.96902, 5.22769, -3.64347)
+mesh = SubResource("BoxMesh_hs31r")
+skeleton = NodePath("../../Segment33")
+
+[node name="Segment36" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(-3.12869, 0, 19.7538, 0, 3, 0, -19.7538, 0, -3.12869, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment37" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(-13.3826, 0, 14.8629, 0, 3, 0, -14.8629, 0, -13.3826, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment38" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(-19.3185, 0, 5.17638, 0, 3, 0, -5.17638, 0, -19.3185, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment39" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(-19.0211, 0, -6.18034, 0, 3, 0, 6.18034, 0, -19.0211, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment40" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(-12.5864, 0, -15.5429, 0, 3, 0, 15.5429, 0, -12.5864, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment41" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(-2.09057, 0, -19.8904, 0, 3, 0, 19.8904, 0, -2.09057, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="LookAtCylinder" type="MeshInstance3D" parent="StitchDisk/Segment41"]
+transform = Transform3D(0.838671, 0, -0.544639, 0, 5, 0, 0.544639, 0, 0.838671, 9.21564, 6.2578, -0.866519)
+mesh = SubResource("CylinderMesh_j1a73")
+skeleton = NodePath("../../Segment40")
+
+[node name="Segment42" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(9.07981, 0, -17.8201, 0, 3, 0, 17.8201, 0, 9.07981, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[node name="Segment43" parent="StitchDisk" instance=ExtResource("5_mk7ct")]
+transform = Transform3D(17.3205, 0, -10, 0, 3, 0, 10, 0, 17.3205, 0, -1.5, 0)
+script = ExtResource("6_d8noy")
+
+[editable path="StitchDisk/Segment33"]

@@ -1,0 +1,313 @@
+[gd_scene load_steps=23 format=3 uid="uid://0rfw10d6dlgk"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_k21yu"]
+[ext_resource type="Script" path="res://StitchDiskScenes/HeadsetPositionRotation.gd" id="2_cniji"]
+[ext_resource type="Script" path="res://StitchDiskScenes/VisibilityHandler.gd" id="3_mc7ma"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_xlsxf"]
+[ext_resource type="Script" path="res://StitchDiskScenes/simplifiedDisk2.gd" id="4_mea5s"]
+[ext_resource type="PackedScene" uid="uid://dsl7w6ujnetde" path="res://StitchDiskScenes/ForestScenes/forest_1.tscn" id="5_ivpil"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="6_rspag"]
+[ext_resource type="PackedScene" uid="uid://chbrgrf5npqo6" path="res://StitchDiskScenes/ForestScenes/forest_5.tscn" id="9_a7kp7"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="9_yiqt7"]
+[ext_resource type="PackedScene" uid="uid://pn1ilag6n5vk" path="res://goal_cube.tscn" id="10_cjhkl"]
+[ext_resource type="PackedScene" uid="uid://ccsj0b6nek3wc" path="res://ui_questionnaire.tscn" id="10_ikeha"]
+[ext_resource type="PackedScene" uid="uid://vegcn56piibe" path="res://StitchDiskScenes/ForestSlices/forestFullCircle.glb" id="11_kg63y"]
+[ext_resource type="PackedScene" uid="uid://2c42tp660ibb" path="res://goal_cylinder.tscn" id="11_w36mf"]
+[ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="11_wbb0y"]
+[ext_resource type="Script" path="res://LoggingSystem.gd" id="12_b080c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87bd7"]
+albedo_color = Color(0.34902, 0.101961, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bah4l"]
+material = SubResource("StandardMaterial3D_87bd7")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jayx1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fg3hg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3f3mo"]
+
+[sub_resource type="Sky" id="Sky_m065i"]
+sky_material = SubResource("ProceduralSkyMaterial_3f3mo")
+
+[sub_resource type="Environment" id="Environment_pak0w"]
+background_mode = 2
+background_energy_multiplier = 0.33
+sky = SubResource("Sky_m065i")
+ambient_light_source = 3
+
+[node name="stitchDiskForest" type="Node3D"]
+script = ExtResource("1_k21yu")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_cniji")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+current = true
+
+[node name="isTurning" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.123599, -4.26487)
+mesh = SubResource("SphereMesh_bah4l")
+skeleton = NodePath("../../..")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+transform = Transform3D(0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_jayx1")
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" instance=ExtResource("3_xlsxf")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+collision_mask = 5243008
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+transform = Transform3D(0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_fg3hg")
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" instance=ExtResource("3_xlsxf")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+
+[node name="playerForward" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 0)
+
+[node name="otherOb" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 20)
+
+[node name="VisibilityHandler" type="Node3D" parent="."]
+script = ExtResource("3_mc7ma")
+
+[node name="StitchDisk" type="Node3D" parent="."]
+script = ExtResource("4_mea5s")
+
+[node name="forest_1_0" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+script = ExtResource("6_rspag")
+nodeRadians = 0.195
+
+[node name="forest_1_1" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.980955, 0, 0.194234, 0, 1, 0, -0.194234, 0, 0.980955, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_2" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.924546, 0, 0.38107, 0, 1, 0, -0.38107, 0, 0.924546, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_3" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.832921, 0, 0.553392, 0, 1, 0, -0.553392, 0, 0.832921, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_4" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.709571, 0, 0.704634, 0, 1, 0, -0.704634, 0, 0.709571, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_5" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.559193, 0, 0.829038, 0, 1, 0, -0.829038, 0, 0.559193, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_5_6" parent="StitchDisk" instance=ExtResource("9_a7kp7")]
+transform = Transform3D(0.387516, 0, 0.921863, 0, 1, 0, -0.921863, 0, 0.387516, 0, 0, 0)
+script = ExtResource("6_rspag")
+nodeRadians = 0.977
+
+[node name="GoalCube" parent="StitchDisk/forest_5_6" instance=ExtResource("10_cjhkl")]
+
+[node name="q1" parent="StitchDisk/forest_5_6" instance=ExtResource("9_yiqt7")]
+process_mode = 2
+transform = Transform3D(0.00921863, 0, 0.00387516, 0, 0.01, 0, -0.00387516, 0, 0.00921863, -1.7851, 1.5, -4.24961)
+visible = false
+screen_size = Vector2(300, 200)
+collision_layer = 5243008
+scene = ExtResource("10_ikeha")
+viewport_size = Vector2(640, 360)
+unshaded = true
+
+[node name="forest_1__7" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.550481, 0, 0.834848, 0, 1, 0, -0.834848, 0, -0.550481, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__8" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.699663, 0, 0.714473, 0, 1, 0, -0.714473, 0, -0.699663, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__9" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.825114, 0, 0.564967, 0, 1, 0, -0.564967, 0, -0.825114, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__10" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, -0.919135, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__11" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, -0.978148, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__12" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.999903, 0, 0.0139622, 0, 1, 0, -0.0139622, 0, -0.999903, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_13" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.983885, 0, -0.178802, 0, 1, 0, 0.178802, 0, -0.983885, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_14" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.930418, 0, -0.366501, 0, 1, 0, 0.366501, 0, -0.930418, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_15" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.841511, 0, -0.54024, 0, 1, 0, 0.54024, 0, -0.841511, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_16" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.720551, 0, -0.693402, 0, 1, 0, 0.693402, 0, -0.720551, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__17" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(-0.572146, 0, -0.820152, 0, 1, 0, 0.820152, 0, -0.572146, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_5_18" parent="StitchDisk" instance=ExtResource("9_a7kp7")]
+transform = Transform3D(-0.401948, 0, -0.915663, 0, 1, 0, 0.915663, 0, -0.401948, 0, 0, 0)
+script = ExtResource("6_rspag")
+nodeRadians = 0.977
+
+[node name="GoalCylinder" parent="StitchDisk/forest_5_18" instance=ExtResource("11_w36mf")]
+
+[node name="q2" parent="StitchDisk/forest_5_18" instance=ExtResource("9_yiqt7")]
+process_mode = 2
+transform = Transform3D(0.00920505, 0, 0.00390731, 0, 0.01, 0, -0.00390731, 0, 0.00920505, -1.785, 1.5, -4.25)
+visible = false
+screen_size = Vector2(300, 200)
+scene = ExtResource("10_ikeha")
+viewport_size = Vector2(640, 320)
+unshaded = true
+
+[node name="forest_1__19" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1__20" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.690883, 0, -0.722967, 0, 1, 0, 0.722967, 0, 0.690883, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_21" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.81815, 0, -0.575005, 0, 1, 0, 0.575005, 0, 0.81815, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_22" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.914254, 0, -0.405142, 0, 1, 0, 0.405142, 0, 0.914254, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_23" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.975535, 0, -0.219846, 0, 1, 0, 0.219846, 0, 0.975535, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="forest_1_Capstone" parent="StitchDisk" instance=ExtResource("5_ivpil")]
+transform = Transform3D(0.988494, 0, -0.151261, 0, 1, 0, 0.151261, 0, 0.988494, 0, 0, 0)
+script = ExtResource("6_rspag")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pak0w")
+
+[node name="forestFullCircle" parent="." instance=ExtResource("11_kg63y")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -2.01, 0)
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.446104, 0.894981, 1.33363e-08, -0.327052, -0.163019, 0.930839, 0.833083, 0.415251, 0.365429, -3.6235, 32.5231, 0)
+light_energy = 0.192
+
+[node name="EnvironmentObstacles" type="Node3D" parent="."]
+
+[node name="XRSimulator" parent="." instance=ExtResource("11_wbb0y")]
+xr_origin = NodePath("../XROrigin3D")
+
+[node name="Logger" type="Node" parent="."]
+script = ExtResource("12_b080c")
+
+[connection signal="screen_entered" from="StitchDisk/forest_1_0/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [0]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_0/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [0]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_1/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [1]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_1/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [1]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_2/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [2]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_2/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [2]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_3/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [3]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_3/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [3]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_4/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [4]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_4/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [4]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_5/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [5]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_5/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [5]]
+[connection signal="screen_entered" from="StitchDisk/forest_5_6/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [6]]
+[connection signal="screen_exited" from="StitchDisk/forest_5_6/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [6]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__7/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [7]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__7/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [7]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__8/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [8]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__8/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [8]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__9/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [9]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__9/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [9]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__10/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [10]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__10/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [10]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__11/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [11]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__11/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [11]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__12/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [12]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__12/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [12]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_13/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [13]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_13/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [13]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_14/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [14]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_14/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [14]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_15/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [15]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_15/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [15]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_16/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [16]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_16/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [16]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__17/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [17]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__17/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [17]]
+[connection signal="screen_entered" from="StitchDisk/forest_5_18/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [18]]
+[connection signal="screen_exited" from="StitchDisk/forest_5_18/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [18]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__19/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [19]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__19/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [19]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__20/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [20]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__20/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [20]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_21/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [21]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_21/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [21]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_22/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [22]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_22/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [22]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_23/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [23]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_23/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [23]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_Capstone/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [24]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_Capstone/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [24]]
+
+[editable path="StitchDisk/forest_1_0"]
+[editable path="StitchDisk/forest_1_1"]
+[editable path="StitchDisk/forest_1_2"]
+[editable path="StitchDisk/forest_1_3"]
+[editable path="StitchDisk/forest_1_4"]
+[editable path="StitchDisk/forest_1_5"]
+[editable path="StitchDisk/forest_5_6"]
+[editable path="StitchDisk/forest_1__7"]
+[editable path="StitchDisk/forest_1__8"]
+[editable path="StitchDisk/forest_1__9"]
+[editable path="StitchDisk/forest_1__10"]
+[editable path="StitchDisk/forest_1__11"]
+[editable path="StitchDisk/forest_1__12"]
+[editable path="StitchDisk/forest_1_13"]
+[editable path="StitchDisk/forest_1_14"]
+[editable path="StitchDisk/forest_1_15"]
+[editable path="StitchDisk/forest_1_16"]
+[editable path="StitchDisk/forest_1__17"]
+[editable path="StitchDisk/forest_5_18"]
+[editable path="StitchDisk/forest_1__19"]
+[editable path="StitchDisk/forest_1__20"]
+[editable path="StitchDisk/forest_1_21"]
+[editable path="StitchDisk/forest_1_22"]
+[editable path="StitchDisk/forest_1_23"]
+[editable path="StitchDisk/forest_1_Capstone"]

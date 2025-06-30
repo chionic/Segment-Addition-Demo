@@ -1,0 +1,684 @@
+[gd_scene load_steps=51 format=3 uid="uid://d06572c4knvxs"]
+
+[ext_resource type="Script" path="res://StitchDiskScenes/MainScene.gd" id="1_miyso"]
+[ext_resource type="Script" path="res://StitchDiskScenes/HeadsetPositionRotation.gd" id="2_sc3r6"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_aaqt6"]
+[ext_resource type="Script" path="res://StitchDiskScenes/VisibilityHandler.gd" id="4_x25rj"]
+[ext_resource type="Script" path="res://StitchDiskAlt.gd" id="5_nd4cc"]
+[ext_resource type="PackedScene" uid="uid://dsl7w6ujnetde" path="res://StitchDiskScenes/ForestScenes/forest_1.tscn" id="6_7dqs7"]
+[ext_resource type="Script" path="res://StitchDiskScenes/rotationAngle.gd" id="7_7loyx"]
+[ext_resource type="PackedScene" uid="uid://5mj1cdd0xdqt" path="res://StitchDiskScenes/TreeScenes/low_poly_mid_birch.tscn" id="8_1fsi1"]
+[ext_resource type="PackedScene" uid="uid://c6amjvitbgaw2" path="res://StitchDiskScenes/Trees/LowPoly_mid_birch.glb" id="8_aoq4q"]
+[ext_resource type="PackedScene" uid="uid://bwdtu4bx8j2wf" path="res://StitchDiskScenes/Trees/LowPoly_mid_evergreen_A.glb" id="9_ambk6"]
+[ext_resource type="PackedScene" uid="uid://cr533f884c6vf" path="res://StitchDiskScenes/Trees/LowPoly_mid_leafy_A.glb" id="10_nuqrk"]
+[ext_resource type="PackedScene" uid="uid://cis7debfanddo" path="res://StitchDiskScenes/Trees/LowPoly_mid_leafy_B.glb" id="11_2rg1g"]
+[ext_resource type="PackedScene" uid="uid://chbrgrf5npqo6" path="res://StitchDiskScenes/ForestScenes/forest_5.tscn" id="13_gtive"]
+[ext_resource type="PackedScene" uid="uid://pn1ilag6n5vk" path="res://goal_cube.tscn" id="14_h24wc"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="15_36lu7"]
+[ext_resource type="PackedScene" uid="uid://ccsj0b6nek3wc" path="res://ui_questionnaire.tscn" id="16_7x2nf"]
+[ext_resource type="PackedScene" uid="uid://iekbkcl4hp5x" path="res://StitchDiskScenes/Trees/LowPoly_tall_evergreen_B.glb" id="16_wvmgn"]
+[ext_resource type="PackedScene" uid="uid://dfrpefm3qwfth" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_birch.glb" id="17_dp7mu"]
+[ext_resource type="PackedScene" uid="uid://c6fcc5ospifyo" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_evergreen_A.glb" id="18_15xd0"]
+[ext_resource type="PackedScene" uid="uid://db3yup0vbff3r" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_leafy_A.glb" id="19_cqopg"]
+[ext_resource type="PackedScene" uid="uid://cb7ivgmu6c4n7" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_leafy_B.glb" id="20_y3xkt"]
+[ext_resource type="PackedScene" uid="uid://csmefkamocj0r" path="res://StitchDiskScenes/Trees/lowPoly_small_evergreen_A.glb" id="21_prw4h"]
+[ext_resource type="PackedScene" uid="uid://dlptgj0nweki4" path="res://StitchDiskScenes/Trees/lowPoly_small_evergreen_B.glb" id="22_javkw"]
+[ext_resource type="PackedScene" uid="uid://cyd2mnjcq2l7u" path="res://StitchDiskScenes/Trees/LowPoly_tallest_leafy_A.glb" id="23_grlba"]
+[ext_resource type="PackedScene" uid="uid://cvy7y0jkuh18a" path="res://StitchDiskScenes/Trees/lowPoly_small_leafy_A.glb" id="24_j1fx2"]
+[ext_resource type="PackedScene" uid="uid://cy0bh7c56ayry" path="res://StitchDiskScenes/Trees/LowPoly_tallest_evergreen_B.glb" id="24_xbbie"]
+[ext_resource type="PackedScene" uid="uid://2c42tp660ibb" path="res://goal_cylinder.tscn" id="25_rgji6"]
+[ext_resource type="PackedScene" uid="uid://bi8g15u22rygk" path="res://StitchDiskScenes/Trees/LowPoly_tall_birch.glb" id="26_7s1vw"]
+[ext_resource type="PackedScene" uid="uid://d166s4oba5xya" path="res://StitchDiskScenes/Trees/LowPoly_tall_evergreen_A.glb" id="27_4fecj"]
+[ext_resource type="PackedScene" uid="uid://lvnvfvt48aql" path="res://StitchDiskScenes/Trees/LowPoly_small_birch.glb" id="27_h3u5v"]
+[ext_resource type="PackedScene" uid="uid://bpm6x1hvgj6bv" path="res://StitchDiskScenes/Trees/LowPoly_tall_leafy_B.glb" id="28_3iefk"]
+[ext_resource type="PackedScene" uid="uid://cc0acnof54d6" path="res://StitchDiskScenes/Trees/LowPoly_tallest_leafy_B.glb" id="29_4mtri"]
+[ext_resource type="PackedScene" uid="uid://vegcn56piibe" path="res://StitchDiskScenes/ForestSlices/forestFullCircle.glb" id="29_oxe8k"]
+[ext_resource type="PackedScene" uid="uid://drjnemap61ix0" path="res://StitchDiskScenes/Trees/LowPoly_mid_evergreen_B.glb" id="30_erpna"]
+[ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="30_gosg3"]
+[ext_resource type="PackedScene" uid="uid://dprx8ons26sqq" path="res://StitchDiskScenes/Trees/lowPoly_small_leafy_B.glb" id="31_3jrta"]
+[ext_resource type="Script" path="res://LoggingSystem.gd" id="31_hvho4"]
+[ext_resource type="PackedScene" uid="uid://e4us47tw1cee" path="res://StitchDiskScenes/Trees/LowPoly_smallMid_evergreen_B.glb" id="32_nagil"]
+[ext_resource type="PackedScene" uid="uid://x7ss7l86xkmo" path="res://ui_questionnaire_2.tscn" id="35_udh3o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87bd7"]
+albedo_color = Color(0.34902, 0.101961, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bah4l"]
+material = SubResource("StandardMaterial3D_87bd7")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jayx1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fg3hg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w80jq"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qe1em"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6q48l"]
+
+[sub_resource type="Sky" id="Sky_m065i"]
+sky_material = SubResource("ProceduralSkyMaterial_6q48l")
+
+[sub_resource type="Environment" id="Environment_pak0w"]
+background_mode = 2
+sky = SubResource("Sky_m065i")
+ambient_light_color = Color(0.635294, 0.301961, 0.0470588, 0.478431)
+
+[sub_resource type="SphereMesh" id="SphereMesh_neday"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c52u2"]
+cull_mode = 1
+albedo_color = Color(0.694118, 1, 1, 1)
+
+[node name="stitchDiskForest" type="Node3D"]
+script = ExtResource("1_miyso")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_sc3r6")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+current = true
+
+[node name="isTurning" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+process_mode = 4
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.123599, -4.26487)
+visible = false
+mesh = SubResource("SphereMesh_bah4l")
+skeleton = NodePath("../../..")
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand"]
+transform = Transform3D(0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_jayx1")
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" instance=ExtResource("3_aaqt6")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+collision_mask = 5243008
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand"]
+transform = Transform3D(0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_fg3hg")
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" instance=ExtResource("3_aaqt6")]
+process_mode = 2
+show_laser = 2
+laser_length = 1
+
+[node name="playerForward" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 0)
+
+[node name="otherOb" type="RayCast3D" parent="XROrigin3D"]
+visible = false
+target_position = Vector3(0, 0, 20)
+
+[node name="VisibilityHandler" type="Node3D" parent="."]
+script = ExtResource("4_x25rj")
+
+[node name="StitchDisk" type="Node3D" parent="."]
+process_mode = 1
+script = ExtResource("5_nd4cc")
+
+[node name="forest_1_0" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_mid_birch2" parent="StitchDisk/forest_1_0/forest_1" index="1" instance=ExtResource("8_1fsi1")]
+transform = Transform3D(1.2, 0, 0, 0, 12, 0, 0, 0, 1.2, -0.210566, 0, -20.5239)
+
+[node name="LowPoly_smallMid_evergreen_A" parent="StitchDisk/forest_1_0/forest_1" index="2" instance=ExtResource("18_15xd0")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -2.18888, 20, -16.1633)
+
+[node name="forest_hidden_1_1" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.980955, 0, 0.194234, 0, 1, 0, -0.194234, 0, 0.980955, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_mid_evergreen_A" parent="StitchDisk/forest_hidden_1_1/forest_1" index="1" instance=ExtResource("9_ambk6")]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 10, 0, 4.47035e-08, 0, 1, -3.04729, 20, -24.9827)
+
+[node name="LowPoly_small_birch" parent="StitchDisk/forest_hidden_1_1/forest_1" index="2" instance=ExtResource("27_h3u5v")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 10, 0, 1.49012e-08, 0, 1, -1.39516, 20, -14.8725)
+
+[node name="forest_1_1" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.980955, 0, 0.194234, 0, 1, 0, -0.194234, 0, 0.980955, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_tallest_leafy_A" parent="StitchDisk/forest_1_1/forest_1" index="1" instance=ExtResource("23_grlba")]
+transform = Transform3D(0.602456, 0, -0.798152, 0, 10, 0, 0.798152, 0, 0.602456, -2.10235, 20, -17.844)
+
+[node name="forest_hidden_1_2" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.924546, 0, 0.38107, 0, 1, 0, -0.38107, 0, 0.924546, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_mid_leafy_A" parent="StitchDisk/forest_hidden_1_2/forest_1" index="1" instance=ExtResource("10_nuqrk")]
+transform = Transform3D(0.763458, 0, -0.645857, 0, 10, 0, 0.645857, 0, 0.763458, -2.98188, 21.4125, -22.4567)
+
+[node name="forest_1_2" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.924546, 0, 0.38107, 0, 1, 0, -0.38107, 0, 0.924546, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="lowPoly_small_evergreen_B" parent="StitchDisk/forest_1_2/forest_1" index="1" instance=ExtResource("22_javkw")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 10, 0, 2.98023e-08, 0, 1, -0.465831, 20, -16.2293)
+
+[node name="LowPoly_smallMid_leafy_B" parent="StitchDisk/forest_1_2/forest_1" index="2" instance=ExtResource("20_y3xkt")]
+transform = Transform3D(-0.653249, 0, -0.757143, 0, 10, 0, 0.757143, 0, -0.653249, -3.18463, 20, -16.8717)
+
+[node name="forest_hidden_1_3" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.709571, 0, 0.704634, 0, 1, 0, -0.704634, 0, 0.709571, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_mid_leafy_B" parent="StitchDisk/forest_hidden_1_3/forest_1" index="1" instance=ExtResource("11_2rg1g")]
+transform = Transform3D(-0.951633, 0, -0.30724, 0, 10, 0, 0.30724, 0, -0.951633, -2.76642, 20, -23.6211)
+
+[node name="forest_1_3" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.832921, 0, 0.553392, 0, 1, 0, -0.553392, 0, 0.832921, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="lowPoly_small_evergreen_A" parent="StitchDisk/forest_1_3/forest_1" index="1" instance=ExtResource("21_prw4h")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 10, 0, -2.98023e-08, 0, 1, -3.09798, 20, -15.6661)
+
+[node name="forest_1_4" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.709571, 0, 0.704634, 0, 1, 0, -0.704634, 0, 0.709571, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="lowPoly_small_evergreen_B" parent="StitchDisk/forest_1_4/forest_1" index="1" instance=ExtResource("22_javkw")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -2.09598, 20, -16.6774)
+
+[node name="LowPoly_tall_evergreen_B" parent="StitchDisk/forest_1_4/forest_1" index="2" instance=ExtResource("16_wvmgn")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -3.11327, 21.1503, -18.9007)
+
+[node name="forest_1_5" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.559193, 0, 0.829038, 0, 1, 0, -0.829038, 0, 0.559193, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_1_5/forest_1" index="1" instance=ExtResource("19_cqopg")]
+transform = Transform3D(0.926338, 0, -0.376693, 0, 10, 0, 0.376693, 0, 0.926338, -3.02112, 20, -16.2254)
+
+[node name="forest_5_6" parent="StitchDisk" instance=ExtResource("13_gtive")]
+transform = Transform3D(0.387516, 0, 0.921863, 0, 1, 0, -0.921863, 0, 0.387516, 0, 0, 0)
+script = ExtResource("7_7loyx")
+nodeRadians = 0.977
+defaultNode = true
+
+[node name="LowPoly_mid_leafy_A" parent="StitchDisk/forest_5_6/forest_5" index="1" instance=ExtResource("10_nuqrk")]
+transform = Transform3D(-1, 0, 1.49012e-07, 0, 10, 0, -1.49012e-07, 0, -1, 9.34171, 20, 15.9254)
+
+[node name="LowPoly_smallMid_evergreen_A" parent="StitchDisk/forest_5_6/forest_5" index="2" instance=ExtResource("18_15xd0")]
+transform = Transform3D(-0.643656, 0, 0.765315, 0, 10, 0, -0.765315, 0, -0.643656, 8.8528, 18.7746, 13.8551)
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_5_6/forest_5" index="3" instance=ExtResource("19_cqopg")]
+transform = Transform3D(0.258971, 0, 0.965886, 0, 10, 0, -0.965886, 0, 0.258971, 10.6514, 20, 8.95985)
+
+[node name="LowPoly_mid_evergreen_A" parent="StitchDisk/forest_5_6/forest_5" index="4" instance=ExtResource("9_ambk6")]
+transform = Transform3D(-1, 0, 1.49012e-07, 0, 10, 0, -1.49012e-07, 0, -1, 4.99376, 20, 17.6946)
+
+[node name="lowPoly_small_leafy_A" parent="StitchDisk/forest_5_6/forest_5" index="5" instance=ExtResource("24_j1fx2")]
+transform = Transform3D(-1, 0, 1.49012e-07, 0, 10, 0, -1.49012e-07, 0, -1, 5.52033, 20, 13.1323)
+
+[node name="LowPoly_tall_evergreen_B" parent="StitchDisk/forest_5_6/forest_5" index="6" instance=ExtResource("16_wvmgn")]
+transform = Transform3D(-0.444213, 0, 0.895922, 0, 10, 0, -0.895922, 0, -0.444213, 14.2365, 20, 10.7879)
+
+[node name="VisibleOnScreenNotifier3D" parent="StitchDisk/forest_5_6" index="1"]
+transform = Transform3D(16.1414, 0, 0.885107, 0, 20, 0, -7.96596, 0, 1.79348, -17.2628, 20, -31.3236)
+
+[node name="GoalCube" parent="StitchDisk/forest_5_6" instance=ExtResource("14_h24wc")]
+transform = Transform3D(19.6191, 0, -3.8847, 0, 30, 0, 3.8847, 0, 19.6191, -38.8731, 13.5254, -73.7868)
+surface_material_override/0 = SubResource("StandardMaterial3D_w80jq")
+
+[node name="q1" parent="StitchDisk/forest_5_6" instance=ExtResource("15_36lu7")]
+process_mode = 2
+transform = Transform3D(0.00921863, 0, 0.00387516, 0, 0.01, 0, -0.00387516, 0, 0.00921863, -1.7851, 1.5, -4.24961)
+visible = false
+screen_size = Vector2(300, 200)
+collision_layer = 5243008
+scene = ExtResource("16_7x2nf")
+viewport_size = Vector2(640, 360)
+unshaded = true
+
+[node name="forest_1__7" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.550481, 0, 0.834848, 0, 1, 0, -0.834848, 0, -0.550481, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_tall_leafy_B" parent="StitchDisk/forest_1__7/forest_1" index="1" instance=ExtResource("28_3iefk")]
+transform = Transform3D(-0.00493941, 0, -0.999988, 0, 10, 0, 0.999988, 0, -0.00493941, -3.70938, 20, -18.3174)
+
+[node name="forest_1__8" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.699663, 0, 0.714473, 0, 1, 0, -0.714473, 0, -0.699663, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="lowPoly_small_evergreen_A" parent="StitchDisk/forest_1__8/forest_1" index="1" instance=ExtResource("21_prw4h")]
+transform = Transform3D(0.981628, 0, -0.190808, 0, 10, 0, 0.190808, 0, 0.981628, -1.63997, 20, -16.6454)
+
+[node name="lowPoly_small_leafy_A" parent="StitchDisk/forest_1__8/forest_1" index="2" instance=ExtResource("24_j1fx2")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 10, 0, -5.96046e-08, 0, 1, -3.58896, 20, -19.1777)
+
+[node name="forest_1__9" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.825114, 0, 0.564967, 0, 1, 0, -0.564967, 0, -0.825114, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_mid_birch" parent="StitchDisk/forest_1__9/forest_1" index="1" instance=ExtResource("8_aoq4q")]
+transform = Transform3D(-0.313097, 0, -0.949721, 0, 10, 0, 0.949721, 0, -0.313097, -2.3228, 20, -18.8273)
+
+[node name="forest_hidden_1_8" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.550481, 0, 0.834848, 0, 1, 0, -0.834848, 0, -0.550481, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_smallMid_birch" parent="StitchDisk/forest_hidden_1_8/forest_1" index="1" instance=ExtResource("17_dp7mu")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 10, 0, 1.19209e-07, 0, 1, -1.8375, 20, -16.9131)
+
+[node name="forest_1__10" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, -0.919135, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_evergreen_A" parent="StitchDisk/forest_1__10/forest_1" index="1" instance=ExtResource("18_15xd0")]
+transform = Transform3D(0.980956, 0, -0.194234, 0, 10, 0, 0.194234, 0, 0.980956, -2.47364, 25.9229, -17.6458)
+
+[node name="LowPoly_small_birch" parent="StitchDisk/forest_1__10/forest_1" index="2" instance=ExtResource("27_h3u5v")]
+transform = Transform3D(1, 0, 0.00101238, 0, 10, 0, -0.00101238, 0, 1, -3.52394, 20, -15.684)
+
+[node name="forest_hidden_1_9" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.825114, 0, 0.564967, 0, 1, 0, -0.564967, 0, -0.825114, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_smallMid_evergreen_A" parent="StitchDisk/forest_hidden_1_9/forest_1" index="1" instance=ExtResource("18_15xd0")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -2.89903, 20, -18.3538)
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_hidden_1_9/forest_1" index="2" instance=ExtResource("19_cqopg")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 10, 0, -2.98023e-08, 0, 1, -0.619413, 20, -21.1383)
+
+[node name="forest_1__11" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, -0.978148, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_tall_evergreen_A" parent="StitchDisk/forest_1__11/forest_1" index="1" instance=ExtResource("27_4fecj")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 10, 0, -1.49012e-08, 0, 1, -2.94495, 20, -19.1868)
+
+[node name="forest_hidden_1_10" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.919135, 0, 0.393942, 0, 1, 0, -0.393942, 0, -0.919135, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_hidden_1_10/forest_1" index="1" instance=ExtResource("19_cqopg")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -1.50453, 20, -21.0386)
+
+[node name="forest_1__12" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.999903, 0, 0.0139622, 0, 1, 0, -0.0139622, 0, -0.999903, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_leafy_B" parent="StitchDisk/forest_1__12/forest_1" index="1" instance=ExtResource("20_y3xkt")]
+transform = Transform3D(-0.320497, 0, -0.94725, 0, 10, 0, 0.94725, 0, -0.320497, -2.5914, 20, -16.8808)
+
+[node name="forest_hidden_1_11" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, -0.978148, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_smallMid_leafy_B" parent="StitchDisk/forest_hidden_1_11/forest_1" index="1" instance=ExtResource("20_y3xkt")]
+transform = Transform3D(1, 0, 3.57628e-07, 0, 10, 0, -3.57628e-07, 0, 1, -1.78371, 20, -16.367)
+
+[node name="forest_1_13" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.983571, 0, -0.180519, 0, 1, 0, 0.180519, 0, -0.983571, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_tallest_leafy_B" parent="StitchDisk/forest_1_13/forest_1" index="1" instance=ExtResource("29_4mtri")]
+transform = Transform3D(-0.747578, 0, 0.664175, 0, 10, 0, -0.664175, 0, -0.747578, -2.38628, 20, -19.0383)
+
+[node name="forest_hidden_1_13" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.983885, 0, -0.178802, 0, 1, 0, 0.178802, 0, -0.983885, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="lowPoly_small_evergreen_A" parent="StitchDisk/forest_hidden_1_13/forest_1" index="1" instance=ExtResource("21_prw4h")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -1.39466, 20, -14.6574)
+
+[node name="forest_1_14" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.930418, 0, -0.366501, 0, 1, 0, 0.366501, 0, -0.930418, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="lowPoly_small_leafy_A" parent="StitchDisk/forest_1_14/forest_1" index="1" instance=ExtResource("24_j1fx2")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 10, 0, 8.9407e-08, 0, 1, -1.1349, 20, -16.3658)
+
+[node name="LowPoly_mid_evergreen_A" parent="StitchDisk/forest_1_14/forest_1" index="2" instance=ExtResource("9_ambk6")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 10, 0, 8.9407e-08, 0, 1, -3.02361, 23.7093, -22.0796)
+
+[node name="forest_hidden_1_14" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.930418, 0, -0.366501, 0, 1, 0, 0.366501, 0, -0.930418, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_mid_evergreen_B" parent="StitchDisk/forest_hidden_1_14/forest_1" index="1" instance=ExtResource("30_erpna")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 10, 0, 8.9407e-08, 0, 1, -3.69787, 20, -23.6131)
+
+[node name="lowPoly_small_leafy_B" parent="StitchDisk/forest_hidden_1_14/forest_1" index="2" instance=ExtResource("31_3jrta")]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 10, 0, 8.9407e-08, 0, 1, -1.29074, 20, -16.7813)
+
+[node name="forest_1_15" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.841511, 0, -0.54024, 0, 1, 0, 0.54024, 0, -0.841511, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_1_15/forest_1" index="1" instance=ExtResource("19_cqopg")]
+transform = Transform3D(0.840084, 0, -0.542456, 0, 10, 0, 0.542456, 0, 0.840084, -2.33377, 20, -18.5554)
+
+[node name="forest_1_16" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.720551, 0, -0.693402, 0, 1, 0, 0.693402, 0, -0.720551, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_mid_birch" parent="StitchDisk/forest_1_16/forest_1" index="1" instance=ExtResource("8_aoq4q")]
+transform = Transform3D(0.386389, 0, 0.922336, 0, 10, 0, -0.922336, 0, 0.386389, -2.69951, 20, -22.9601)
+
+[node name="lowPoly_small_evergreen_B" parent="StitchDisk/forest_1_16/forest_1" index="2" instance=ExtResource("22_javkw")]
+transform = Transform3D(-0.930417, 0, 0.366502, 0, 10, 0, -0.366502, 0, -0.930417, -2.81306, 20, -16.8442)
+
+[node name="forest_1__17" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(-0.572146, 0, -0.820152, 0, 1, 0, 0.820152, 0, -0.572146, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_tallest_evergreen_B" parent="StitchDisk/forest_1__17/forest_1" index="1" instance=ExtResource("24_xbbie")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 10, 0, 2.98023e-08, 0, 1, -2.59161, 20, -18.3194)
+
+[node name="forest_5_18" parent="StitchDisk" instance=ExtResource("13_gtive")]
+transform = Transform3D(-0.401948, 0, -0.915663, 0, 1, 0, 0.915663, 0, -0.401948, 0, 0, 0)
+script = ExtResource("7_7loyx")
+nodeRadians = 0.977
+defaultNode = true
+
+[node name="LowPoly_tallest_leafy_A" parent="StitchDisk/forest_5_18/forest_5" index="1" instance=ExtResource("23_grlba")]
+transform = Transform3D(-0.809171, 0, -0.587573, 0, 10, 0, 0.587573, 0, -0.809171, 9.276, 20, 15.9874)
+
+[node name="LowPoly_tall_evergreen_B" parent="StitchDisk/forest_5_18/forest_5" index="2" instance=ExtResource("16_wvmgn")]
+transform = Transform3D(-0.766033, 0, 0.642801, 0, 10, 0, -0.642801, 0, -0.766033, 14.4304, 20, 12.0759)
+
+[node name="LowPoly_mid_leafy_B" parent="StitchDisk/forest_5_18/forest_5" index="3" instance=ExtResource("11_2rg1g")]
+transform = Transform3D(0.615345, 0, -0.788258, 0, 10, 0, 0.788258, 0, 0.615345, 4.9212, 20, 21.3892)
+
+[node name="LowPoly_smallMid_birch" parent="StitchDisk/forest_5_18/forest_5" index="4" instance=ExtResource("17_dp7mu")]
+transform = Transform3D(-0.877924, 0, -0.478799, 0, 10, 0, 0.478799, 0, -0.877924, 10.0712, 20, 11.3464)
+
+[node name="LowPoly_smallMid_evergreen_B" parent="StitchDisk/forest_5_18/forest_5" index="5" instance=ExtResource("32_nagil")]
+transform = Transform3D(-1, 0, 1.49012e-07, 0, 10, 0, -1.49012e-07, 0, -1, 5.4439, 20, 15.3515)
+
+[node name="LowPoly_smallMid_evergreen_A" parent="StitchDisk/forest_5_18/forest_5" index="6" instance=ExtResource("18_15xd0")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 10, 0, -2.08616e-07, 0, -1, 2.17897, 20, 17.4039)
+
+[node name="VisibleOnScreenNotifier3D" parent="StitchDisk/forest_5_18" index="1"]
+transform = Transform3D(25.1478, 0, 0.879438, 0, 20, 0, -12.3121, 0, 1.79627, -18.0982, 20, -31.8153)
+
+[node name="GoalCylinder" parent="StitchDisk/forest_5_18" instance=ExtResource("25_rgji6")]
+transform = Transform3D(-18.4909, 0, 7.62142, 0, 15, 0, -7.62142, 0, -18.4909, -43.618, 13.1166, -79.1161)
+surface_material_override/0 = SubResource("StandardMaterial3D_qe1em")
+
+[node name="q2" parent="StitchDisk/forest_5_18" instance=ExtResource("15_36lu7")]
+process_mode = 2
+transform = Transform3D(0.00920505, 0, 0.00390731, 0, 0.01, 0, -0.00390731, 0, 0.00920505, -1.785, 1.5, -4.25)
+visible = false
+screen_size = Vector2(300, 200)
+scene = ExtResource("35_udh3o")
+viewport_size = Vector2(640, 320)
+unshaded = true
+
+[node name="forest_1__19" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_1__19/forest_1" index="1" instance=ExtResource("19_cqopg")]
+transform = Transform3D(0.464115, 0, -0.885774, 0, 10, 0, 0.885774, 0, 0.464115, -2.51052, 20, -17.8125)
+
+[node name="forest_1__20" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.690883, 0, -0.722967, 0, 1, 0, 0.722967, 0, 0.690883, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_mid_leafy_A" parent="StitchDisk/forest_1__20/forest_1" index="1" instance=ExtResource("10_nuqrk")]
+transform = Transform3D(0.126615, 0, -0.991952, 0, 10, 0, 0.991952, 0, 0.126615, -2.8205, 20, -20.0248)
+
+[node name="LowPoly_smallMid_evergreen_B" parent="StitchDisk/forest_1__20/forest_1" index="2" instance=ExtResource("32_nagil")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 10, 0, 2.98023e-08, 0, 1, -2.07665, 20, -15.8973)
+
+[node name="forest_1_21" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.81815, 0, -0.575005, 0, 1, 0, 0.575005, 0, 0.81815, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_evergreen_A" parent="StitchDisk/forest_1_21/forest_1" index="1" instance=ExtResource("18_15xd0")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -2.08606, 20, -18.7243)
+
+[node name="forest_hidden_1_20" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_tall_birch" parent="StitchDisk/forest_hidden_1_20/forest_1" index="1" instance=ExtResource("26_7s1vw")]
+transform = Transform3D(0.487707, 0, -0.873007, 0, 10, 0, 0.873007, 0, 0.487707, -3.27942, 20, -22.7779)
+
+[node name="forest_1_22" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.914254, 0, -0.405142, 0, 1, 0, 0.405142, 0, 0.914254, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="LowPoly_smallMid_leafy_B" parent="StitchDisk/forest_1_22/forest_1" index="1" instance=ExtResource("20_y3xkt")]
+transform = Transform3D(-0.173837, 0, 0.984774, 0, 10, 0, -0.984774, 0, -0.173837, -2.77882, 20, -19.1702)
+
+[node name="forest_hidden_1_21" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_tall_evergreen_A" parent="StitchDisk/forest_hidden_1_21/forest_1" index="1" instance=ExtResource("27_4fecj")]
+transform = Transform3D(0.482014, 0, -0.876164, 0, 10, 0, 0.876164, 0, 0.482014, -5.07043, 20, -26.7207)
+
+[node name="LowPoly_smallMid_leafy_A" parent="StitchDisk/forest_hidden_1_21/forest_1" index="2" instance=ExtResource("19_cqopg")]
+transform = Transform3D(0.0456245, 0, -0.998959, 0, 10, 0, 0.998959, 0, 0.0456245, -3.08914, 20, -22.7507)
+
+[node name="forest_1_23" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.975535, 0, -0.219846, 0, 1, 0, 0.219846, 0, 0.975535, 0, 0, 0)
+script = ExtResource("7_7loyx")
+defaultNode = true
+
+[node name="lowPoly_small_leafy_A" parent="StitchDisk/forest_1_23/forest_1" index="1" instance=ExtResource("24_j1fx2")]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -0.831964, 20, -16.6288)
+
+[node name="forest_hidden_1_22" parent="StitchDisk" instance=ExtResource("6_7dqs7")]
+transform = Transform3D(0.914254, 0, -0.405142, 0, 1, 0, 0.405142, 0, 0.914254, 0, 0, 0)
+visible = false
+script = ExtResource("7_7loyx")
+
+[node name="LowPoly_tall_leafy_B" parent="StitchDisk/forest_hidden_1_22/forest_1" index="1" instance=ExtResource("28_3iefk")]
+transform = Transform3D(-0.724497, 0, -0.689278, 0, 10, 0, 0.689278, 0, -0.724497, -2.90891, 20, -21.4987)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pak0w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 0, 0)
+mesh = SubResource("SphereMesh_neday")
+surface_material_override/0 = SubResource("StandardMaterial3D_c52u2")
+
+[node name="forestFullCircle" parent="." instance=ExtResource("29_oxe8k")]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="EnvironmentObstacles" type="Node3D" parent="."]
+
+[node name="XRSimulator" parent="." instance=ExtResource("30_gosg3")]
+xr_origin = NodePath("../XROrigin3D")
+
+[node name="Logger" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("31_hvho4")
+
+[connection signal="screen_entered" from="StitchDisk/forest_1_0/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [0]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_0/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [0]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_0/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [0]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_1/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [1]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_1/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [1]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_1/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [1]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_1/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [2]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_1/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [2]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_1/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [2]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_2/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [3]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_2/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [3]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_2/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [3]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_2/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [4]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_2/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [4]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_2/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [4]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_3/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [5]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_3/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [5]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_3/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [5]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_3/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [6]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_3/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [6]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_3/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [6]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_4/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [7]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_4/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [7]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_4/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [7]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_5/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [8]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_5/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [8]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_5/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [8]]
+[connection signal="screen_entered" from="StitchDisk/forest_5_6/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [9]]
+[connection signal="screen_exited" from="StitchDisk/forest_5_6/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [9]]
+[connection signal="screen_exited" from="StitchDisk/forest_5_6/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [9]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__7/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [10]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__7/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [10]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__7/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [10]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__8/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [11]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__8/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [11]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__8/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [11]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__9/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [12]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__9/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [12]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__9/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [12]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_8/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [13]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_8/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [13]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_8/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [13]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__10/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [14]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__10/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [14]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__10/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [14]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_9/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [15]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_9/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [15]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_9/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [15]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__11/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [16]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__11/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [16]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__11/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [16]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_10/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [17]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_10/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [17]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_10/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [17]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__12/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [18]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__12/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [18]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__12/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [18]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_11/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [19]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_11/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [19]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_11/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [19]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_13/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [20]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_13/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [20]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_13/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [20]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_13/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [21]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_13/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [21]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_13/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [21]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_14/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [22]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_14/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [22]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_14/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [22]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_14/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [23]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_14/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [23]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_14/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [23]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_15/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [24]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_15/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [24]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_15/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [24]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_16/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [25]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_16/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [25]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_16/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [25]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__17/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [26]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__17/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [26]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__17/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [26]]
+[connection signal="screen_entered" from="StitchDisk/forest_5_18/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [27]]
+[connection signal="screen_exited" from="StitchDisk/forest_5_18/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [27]]
+[connection signal="screen_exited" from="StitchDisk/forest_5_18/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [27]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__19/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [28]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__19/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [28]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__19/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [28]]
+[connection signal="screen_entered" from="StitchDisk/forest_1__20/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [29]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__20/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [29]]
+[connection signal="screen_exited" from="StitchDisk/forest_1__20/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [29]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_21/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [30]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_21/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [30]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_21/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [30]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_20/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [31]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_20/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [31]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_20/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [31]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_22/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [32]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_22/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [32]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_22/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [32]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_21/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [33]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_21/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [33]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_21/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [33]]
+[connection signal="screen_entered" from="StitchDisk/forest_1_23/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [34]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_23/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [34]]
+[connection signal="screen_exited" from="StitchDisk/forest_1_23/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [34]]
+[connection signal="screen_entered" from="StitchDisk/forest_hidden_1_22/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_entered" binds= [35]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_22/VisibleOnScreenNotifier3D" to="VisibilityHandler" method="_on_visible_on_screen_notifier_3d_screen_exited" binds= [35]]
+[connection signal="screen_exited" from="StitchDisk/forest_hidden_1_22/VisibleOnScreenNotifier3D" to="StitchDisk" method="checkOverlapGoal" binds= [35]]
+
+[editable path="StitchDisk/forest_1_0"]
+[editable path="StitchDisk/forest_hidden_1_1"]
+[editable path="StitchDisk/forest_1_1"]
+[editable path="StitchDisk/forest_hidden_1_2"]
+[editable path="StitchDisk/forest_1_2"]
+[editable path="StitchDisk/forest_hidden_1_3"]
+[editable path="StitchDisk/forest_1_3"]
+[editable path="StitchDisk/forest_1_4"]
+[editable path="StitchDisk/forest_1_5"]
+[editable path="StitchDisk/forest_5_6"]
+[editable path="StitchDisk/forest_1__7"]
+[editable path="StitchDisk/forest_1__8"]
+[editable path="StitchDisk/forest_1__9"]
+[editable path="StitchDisk/forest_hidden_1_8"]
+[editable path="StitchDisk/forest_1__10"]
+[editable path="StitchDisk/forest_hidden_1_9"]
+[editable path="StitchDisk/forest_1__11"]
+[editable path="StitchDisk/forest_hidden_1_10"]
+[editable path="StitchDisk/forest_1__12"]
+[editable path="StitchDisk/forest_hidden_1_11"]
+[editable path="StitchDisk/forest_1_13"]
+[editable path="StitchDisk/forest_hidden_1_13"]
+[editable path="StitchDisk/forest_1_14"]
+[editable path="StitchDisk/forest_hidden_1_14"]
+[editable path="StitchDisk/forest_1_15"]
+[editable path="StitchDisk/forest_1_16"]
+[editable path="StitchDisk/forest_1__17"]
+[editable path="StitchDisk/forest_5_18"]
+[editable path="StitchDisk/forest_1__19"]
+[editable path="StitchDisk/forest_1__20"]
+[editable path="StitchDisk/forest_1_21"]
+[editable path="StitchDisk/forest_hidden_1_20"]
+[editable path="StitchDisk/forest_1_22"]
+[editable path="StitchDisk/forest_hidden_1_21"]
+[editable path="StitchDisk/forest_1_23"]
+[editable path="StitchDisk/forest_hidden_1_22"]
